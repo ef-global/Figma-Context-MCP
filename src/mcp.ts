@@ -73,11 +73,12 @@ function registerTools(server: McpServer, figmaService: FigmaService): void {
         };
 
         Logger.log("Generating YAML result from file");
-        const yamlResult = yaml.dump(result);
+        // For now, we're sending the result as JSON
+        // const yamlResult = yaml.dump(result);
 
         Logger.log("Sending result to client");
         return {
-          content: [{ type: "text", text: yamlResult }],
+          content: [{ type: "text", text: JSON.stringify(result) }],
         };
       } catch (error) {
         const message = error instanceof Error ? error.message : JSON.stringify(error);
