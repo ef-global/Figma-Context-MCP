@@ -67,7 +67,11 @@ function registerTools(server: McpServer, figmaService: FigmaService): void {
         const { nodes, globalVars, ...metadata } = file;
 
         const result = {
-          metadata,
+          metadata: {
+            ...metadata,
+            fileKey,
+            nodeId,
+          },
           nodes,
           globalVars,
         };
